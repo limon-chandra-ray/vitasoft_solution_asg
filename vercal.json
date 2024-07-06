@@ -2,18 +2,18 @@
     "version": "2",
     "build":[
         {
-            "src":"colladev/wsgi.py",
-            "use":"@vercal/python",
+            "src": "colladev/wsgi.py",
+            "use": "@vercal/python",
             "config":{
-                "maxLambdaSize":"15mb",
-                "runtime":"python-3.11.4"
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.11.4"
             }
         }
     ],
     "routes":[
         {
-            "src":"/(.*)",
-            "dest":"colladev/wsgi.py"
+            "src": "/(.*)",
+            "dest": "colladev/wsgi.py"
         }
     ]
 }
