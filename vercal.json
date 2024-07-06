@@ -2,7 +2,7 @@
     "version": "2",
     "build":[
         {
-            "src": "colladev/wsgi.py",
+            "src": "collabdev/wsgi.py",
             "use": "@vercal/python",
             "config":{
                 "maxLambdaSize": "15mb",
@@ -13,7 +13,7 @@
     "routes":[
         {
             "src": "/(.*)",
-            "dest": "colladev/wsgi.py"
+            "dest": "collabdev/wsgi.py"
         }
     ]
 }
