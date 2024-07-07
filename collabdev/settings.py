@@ -36,12 +36,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ["*",'.vercel.app','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app','localhost','127.0.0.1']
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'http://*.vercal.app',
-#     'https://*.vercal.app'
-# ]
+
 
 # Application definition
 
@@ -105,12 +102,8 @@ WSGI_APPLICATION = 'collabdev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
+
 
 # Replace the DATABASES section of your settings.py with this
 # DATABASES = {
@@ -135,14 +128,11 @@ DATABASES = {
     'USER': "porikkha_edu_bd_owner",
     'PASSWORD': "V0lhvEyF7Mrn",
     'HOST': "ep-old-sound-a178o8oe.ap-southeast-1.aws.neon.tech",
-    'PORT': 5432,
-    # 'OPTIONS': {
-    #   'sslmode': 'disable',
-    # },
+    'PORT': 5432
   }
 }
 
-# DATABASES['default'] = dj_database_url.parse(getenv("DATABASE_URL"))
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
