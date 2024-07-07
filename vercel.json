@@ -1,6 +1,6 @@
 {
     "version": "2",
-    "build":[
+    "builds":[
         {
             "src": "collabdev/wsgi.py",
             "use": "@vercel/python",
