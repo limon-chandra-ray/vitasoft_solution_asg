@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 from os import getenv
 from dotenv import load_dotenv
+import dj_database_url
 load_dotenv()
 import environ
 env = environ.Env(
@@ -37,7 +38,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['*','.vercel.app','.now.sh','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -120,19 +121,27 @@ WSGI_APPLICATION = 'collabdev.wsgi.application'
 #     #     },
 #     }
 # }
-
-
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': "porikkha_edu_bd",
-    'USER': "porikkha_edu_bd_owner",
-    'PASSWORD': "V0lhvEyF7Mrn",
-    'HOST': "ep-old-sound-a178o8oe.ap-southeast-1.aws.neon.tech",
-    'PORT': 5432
-    
-  }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# if DEBUG == "FALSE":
+DATABASES ={
+    "default": dj_database_url.parse("postgresql://porikkha_online_bd_user:GgQFLL6dtxKvZdA88sWrRUiRMMsMXin1@dpg-cq576geehbks73bkcf7g-a.singapore-postgres.render.com/porikkha_online_bd")
 }
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': "porikkha_edu_bd",
+#     'USER': "porikkha_edu_bd_owner",
+#     'PASSWORD': "V0lhvEyF7Mrn",
+#     'HOST': "ep-old-sound-a178o8oe.ap-southeast-1.aws.neon.tech",
+#     'PORT': 5432
+    
+#   }
+# }
 
 
 # Password validation
