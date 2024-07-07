@@ -12,21 +12,36 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from os import getenv
+
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ys7-eqinym(w#-k_6ol%tk&5y(-f5(#*@gi1rm21e7k$8mw)!k'
+# SECRET_KEY = 'django-insecure-ys7-eqinym(w#-k_6ol%tk&5y(-f5(#*@gi1rm21e7k$8mw)!k'
 
+SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['.vercal.app']
+ALLOWED_HOSTS = ["*",'.vercel.app']
 
+# CSRF_TRUSTED_ORIGINS = [
+#     'http://*.vercal.app',
+#     'https://*.vercal.app'
+# ]
 
 # Application definition
 
@@ -90,14 +105,44 @@ WSGI_APPLICATION = 'collabdev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# Replace the DATABASES section of your settings.py with this
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': env('PGDATABASE'),
+#     'USER': env('PGUSER'),
+#     'PASSWORD': env('PGPASSWORD'),
+#     'HOST': env('PGHOST'),
+#     'PORT': env('PGPORT'),
+#     # 'OPTIONS': {
+#     #     'sslmode': 'require',
+#     #     },
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': "porikkha_edu_bd",
+    'USER': "porikkha_edu_bd_owner",
+    'PASSWORD': "V0lhvEyF7Mrn",
+    'HOST': "ep-old-sound-a178o8oe.ap-southeast-1.aws.neon.tech",
+    'PORT': 5432,
+    # 'OPTIONS': {
+    #   'sslmode': 'disable',
+    # },
+  }
 }
 
-
+# DATABASES['default'] = dj_database_url.parse(getenv("DATABASE_URL"))
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
